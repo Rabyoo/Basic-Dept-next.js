@@ -1,0 +1,566 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --grid-width: 721px;
+    --grid-height: 612px;
+    --bottom-panel-height: 0rem;
+    --text-color: #252422ff;
+    --background-color: #f4f4f4ff;
+    --initial-animation-delay: 0s;
+    --ease-out: cubic-bezier(0.28,0.44,0.49,1);
+    --bounce: cubic-bezier(0.6,0,0.1,1.4);
+    --ease-out-soft: cubic-bezier(0.28,0,0.49,1);
+    --ease-in-out-soft: cubic-bezier(0.72,0,0.28,1);
+    --ease-in-out-hard: cubic-bezier(0.77,0,0.175,1);
+    --ease-garret: cubic-bezier(0.5,0,0,1);
+    --bd-time-transition-250: 0.25s;
+    --bd-time-transition-650: 0.65s;
+    --ease-out: cubic-bezier(0.28,0.44,0.49,1);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: color var(--bd-time-transition-650) var(--ease-in-out-soft), background-color var(--bd-time-transition-650) var(--ease-in-out-soft);
+    will-change: background-color, color;
+}
+.container .video video {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    cursor:grab;
+}
+.container header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-color: #ffffffef;
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+    padding: 25px 20px;
+    z-index: 999;
+}
+.container header .list {
+    display: flex;
+}
+.container header .list li {
+    margin-left: 25px;
+}
+.container header .list li::before {
+    content: "";
+    position: absolute;
+    bottom: 25px;
+    width: 0;
+    max-width: 100%;
+    height: 2px;
+    background-color: #111;
+    transition: 0.3s all;
+}
+.container header .list li:hover::before {
+    width: 4%;
+}
+.logo svg {
+    width: 150px;
+}
+
+
+/*pushing a hamburger menu into a pillow texture like background*/
+
+.menuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 13%;
+  color: #090909;
+  width: 3em;
+  height: 3em;
+  border-radius: 0.5em;
+  background: #171717;
+  border: 1px solid #171717;
+  transition: all .3s;
+  box-shadow: inset 4px 4px 12px #3a3a3a,
+             inset -4px -4px 12px #000000;
+}
+
+.menuButton:hover {
+  border: 1px solid black;
+}
+
+.menuButton:active {
+  color: #666;
+  box-shadow: 6px 6px 12px #3a3a3a,
+             -6px -6px 12px #000000;
+}
+
+input[type = "checkbox"] {
+  -webkit-appearance: none;
+  display: none;
+  visibility: hidden;
+}
+
+.menuButton span {
+  width: 30px;
+  height: 4px;
+  background: rgb(200,200,200);
+  border-radius: 100px;
+  transition: 0.3s ease;
+}
+
+input[type]:checked ~ span.top {
+  transform: translateY(290%)rotate(45deg);
+  width: 40px;
+}
+
+input[type]:checked ~ span.bot {
+  transform: translateY(-270%) rotate(-45deg);
+  width: 40px;
+  box-shadow: 0 0 10px #495057;
+}
+
+input[type]:checked ~ span.mid {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+
+.container .one {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    padding: 150px 0;
+    margin-top: 60px;
+}
+.container .one .threeBoxes {
+    display: flex;
+    justify-content: space-around;
+    margin:  0 auto;
+}
+.container .one .threeBoxes .box a {
+    position: relative;
+    top: 20px;
+    width: 400px !important;
+}
+.container .one .threeBoxes .box svg {
+    cursor: pointer;
+    transition: 0.3s;
+}
+.container .one .threeBoxes .box svg:hover {
+    transform: scale(1.06);
+}
+.container .one .threeBoxes .box:hover {
+    text-decoration: underline;
+}
+.container .line {
+    max-width: 100%;
+    width: 80%;
+    left: 10%;
+    height: 1px;
+    background-color: var(--text-color);
+    position: absolute;
+    top: 170%;
+    margin-bottom: 100px;
+}
+.container .two {
+    position: absolute;
+    top: 190%;
+    display: flex;
+    justify-content: space-around;
+    max-width: 100%;
+    width: 100%;
+}
+.container .two .text-content h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.container .two .text-content button,
+.container .four .text button,
+.container .four .featured .btn button {
+    position: relative;
+    top: 25px;
+    display: inline-flex;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 20px;
+    border: .1rem solid;
+    border-radius: 1.6rem;
+    color: currentcolor;
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -.02em;
+    line-height: 2.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: translateZ(0);
+    transition: border-color var(--bd-time-transition-650) var(--ease-out), color var(--bd-time-transition-250) var(--ease-out);
+    white-space: nowrap;
+    transition: 0.2 all;
+}
+.container .two .text-content button:hover, 
+.container .four .text button:hover,
+.container .four .featured .btn button:hover {
+    color: var(--background-color);
+    outline: 0;
+    background-color: #111;
+}
+.container .two .cards {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    top: 100%;
+    margin-top: 150px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.container .two .cards .card a {
+    font-size: 22px;
+    font-weight: 600;
+    position: relative;
+    top: 8px;
+}
+.container .two .cards .card p {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.container .two .cards .card:hover a {
+    text-decoration: underline;
+}
+.container .two {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.container .three .cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container .line.two {
+    max-width: 100%;
+    width: 80%;
+    left: 10%;
+    height: 1px;
+    background-color: var(--text-color);
+    position: absolute;
+    top: 380%;
+    margin-bottom: 100px;
+}
+.container .three {
+    position: absolute;
+    top: 410%;
+}
+.container .three .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: auto;
+    max-width: 100%;
+    width: 90%;
+    left: 0;
+    margin: 0 auto;
+    align-items: center;
+}
+.container .three .title h1 {
+    position: absolute;
+    left: 10%;
+    /* max-width: 100%;
+    width: 100%; */
+    top: -150px;
+    font-size: 38px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.container .three .cards .card {
+    margin: 50px 0;
+}
+.container .three .cards .card h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 10px 0;
+    color: #222;
+}
+.container .three .cards .card .underLine {
+    width: 30px;
+    height: 2px;
+    background-color: #111;
+    margin: 4px 0;
+}
+.container .four {
+    position: absolute;
+    top: 550%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+    height: 150%;
+    background-color: #222;
+    padding: 150px 0;
+    margin-top: 50px;
+}
+.container .one .threeBoxes {
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.container .four .text q {
+    display: block;
+    font-size: 70px;
+    font-weight: 600;
+    letter-spacing: -.05em;
+    line-height: .9;
+    color: #f9cdcdff;
+    text-transform: uppercase;
+}
+.container .four .text p {
+    font-size: 18px;
+    color: #ddd;
+    margin: 10px 0;
+}
+.container .four .text button {
+    background-color: #fff;
+}
+.container .four .img-video video {
+    position: relative;
+    top: -80px;
+}
+.container .four .featured {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 92%;
+    color: #fff;
+}
+.container .four .featured .text h1 {
+    font-size: 20px;
+    color: #f9cdcdff;
+}
+.container .four .featured .btn button {
+    width: 130px;
+    height: 35px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .rectangles {
+    max-width: 100%;
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    top: 720%;
+    overflow-y: hidden;
+}
+.container .four {
+    flex-wrap: wrap;
+}
+.container .rectangles .rectangle {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.container .rectangles .rectangle:hover .text-content a {
+    text-decoration: underline;
+}
+.container .rectangles .rectangle::before {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    max-width: 100%;
+    width: 100%;
+    left: 0%;
+    height: 1px;
+    background-color: #222;
+}
+.container .rectangles .rectangle:last-child::before {
+    display: none;
+}
+.container .rectangles {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.container .rectangles .rectangle .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    left: -160px;
+}
+.container .rectangles .rectangle .text-content a {
+    font-size: 28px;
+    font-weight: 550;
+}
+.container .rectangles .rectangle .text-content p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+
+.container-footer {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    top: 1250%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #222;
+    padding: 50px 10px;
+    color: #fff;
+}
+.container-footer header,
+.container-footer nav,
+.container-footer footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+    margin: 20px 0;
+}
+.container-footer nav .input-email input {
+    border-bottom: 1px solid #FFF;
+}
+.container-footer nav .list-f h1 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    margin-left: -15px;
+}
+.container-footer nav .list-f li {
+    margin-top: 8px;
+}
+.container-footer nav .list-f li:hover {
+    text-decoration: underline;
+}
+.container-footer footer {
+    position: relative;
+    top: 65px;
+}
+/* Start Media Query */
+@media screen and (max-width: 768px) {
+    .container header .list {
+        display: none;
+    }
+    .container .two {
+        flex-direction: column-reverse;
+        max-width: 100%;
+        width: 100%;
+        position: absolute;
+        left: 20%;
+        transform: translate(-50%);
+        top: 160%;
+    }
+    .container .three .cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .container .one {
+        position: absolute;
+        top: 300px;
+    }
+    .container .four {
+        height: 75%;
+    }
+    .menuButton {
+        position: absolute;
+        right: 100px;
+    }
+    svg {
+        width: 150px;
+    }
+    .container .one .threeBoxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    left: 60%;
+    transform: translate(-50%);
+    }
+    .container .one .threeBoxes .box {
+        margin-top: 25px;
+    }
+    .container .line {
+        top: 148%;
+    }
+    .container .two .cards {
+        position: absolute;
+        left: -15%;
+        max-width: 100%;
+        width: 90%;
+    }
+    .container .two .card {
+        width: 200px;
+    }
+    .container-footer {
+        top: 1125%;
+    }
+    .container .four .img-video video {
+        width: 300px;
+        /* height: 350px; */
+        position: relative;
+        top: -130px;
+    }
+    .container .four .featured .text h1 {
+        position: relative;
+        top: 80px;
+    }
+    .container .line.two {
+        top: 315%;
+        left: 50%;
+    }
+    .container .three {
+    position: absolute;
+    top: 350%;
+}
+nav .input-email input {
+    width: 200px;
+}
+    .container .four .featured .btn button {
+        position: relative;
+        top: -10px;
+    }
+    .container .rectangles {
+        position: absolute;
+    transform: translateY(0%);
+    }
+    .container .rectangles .rectangle .text-content {
+        left: 20px;
+    }
+    .container .four .text {
+        position: relative;
+        top: -120px;
+    }
+    .container .four .text q {
+        font-size: 32px;
+    }
+    .container-footer header, 
+    .container-footer nav, 
+    .container-footer footer {
+        gap: 0;
+
+    }
+    .container-footer {
+        padding: 0;
+        justify-content: space-evenly;
+    }
+}
+
+/* End Media Query */
